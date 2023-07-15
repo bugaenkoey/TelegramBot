@@ -3,6 +3,7 @@ package default_set.bot_settings.bot_commands.setting;
 import com.vdurmont.emoji.EmojiParser;
 import default_set.bot_settings.ChatSetting;
 import default_set.bot_settings.SendCommand;
+import default_set.bot_settings.TelegramBot;
 import default_set.bot_settings.bot_commands.start.Start;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 
@@ -27,7 +28,8 @@ public class Setting extends SendCommand {
     @Override
     public  InlineKeyboardButton getBackButton() {
         InlineKeyboardButton button = new InlineKeyboardButton();
-        button.setText(EmojiParser.parseToUnicode(":back:" + "Назад"));
+//        button.setText(EmojiParser.parseToUnicode(":back:" + "Назад"));
+        button.setText(EmojiParser.parseToUnicode(":back:" + TelegramBot.getBackButtonText()));
         button.setCallbackData(PARENT_COMMAND);
         return button;
     }

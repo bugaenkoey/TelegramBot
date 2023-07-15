@@ -4,6 +4,8 @@ import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageTe
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import support_classes.Support;
 
+import java.nio.charset.StandardCharsets;
+
 public class Command {
     protected final String commandName;
     protected String buttonText;
@@ -12,7 +14,8 @@ public class Command {
 
     public Command(String commandName, String buttonText, String commandResultText, String parentCommand) {
         this.commandName = commandName;
-        this.buttonText = buttonText;
+//        this.buttonText = buttonText;
+        this.buttonText = new String(buttonText.getBytes(), StandardCharsets.UTF_8);
         this.commandResultText = commandResultText;
         this.parentCommand = parentCommand;
     }

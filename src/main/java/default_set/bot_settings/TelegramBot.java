@@ -30,6 +30,7 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import support_classes.Support;
 
+import java.nio.charset.StandardCharsets;
 import java.time.LocalTime;
 import java.util.*;
 import java.util.concurrent.Executors;
@@ -40,6 +41,8 @@ public class TelegramBot extends TelegramLongPollingBot  {
 
     private static String homeButtonText = "Додому";
     private static String backButtonText = "Назад";
+    //    private static String backButtonText = new String("Назад".getBytes(), StandardCharsets.UTF_8);
+//            "Назад";
     private static final List<EditCommand> editCommands = new ArrayList<>();
     private static final List<SendCommand> sendCommands = new ArrayList<>();
     private static final List<Bank> banks = new ArrayList<>();
@@ -71,7 +74,8 @@ public class TelegramBot extends TelegramLongPollingBot  {
     }
 
     public static String getBackButtonText() {
-        return backButtonText;
+        return new String(backButtonText.getBytes(), StandardCharsets.UTF_8);
+//         return backButtonText;
     }
 
     private static void setBackButtonText(String backButtonText) {
@@ -159,7 +163,7 @@ public class TelegramBot extends TelegramLongPollingBot  {
     }
 
     public static String getHomeButtonText() {
-        return homeButtonText;
+        return new String(homeButtonText.getBytes(), StandardCharsets.UTF_8);
     }
 
     @Override

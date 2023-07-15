@@ -8,13 +8,16 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class Start extends SendCommand {
 
     public static final String COMMAND_NAME = "/start";
     protected static final String BUTTON_TEXT = "/start";
-    protected static final String COMMAND_RESULT_TEXT = "Вітаємо. Цей бот допоможе відслідковувати актуальні курси валют";
+    protected static final String COMMAND_RESULT_TEXT = new String(("Вітаємо. Цей бот допоможе " +
+            "відслідковувати актуальні курси валют").getBytes(), StandardCharsets.UTF_8);
+//            "Вітаємо. Цей бот допоможе відслідковувати актуальні курси валют";
     protected static final String PARENT_COMMAND = COMMAND_NAME;
 
 

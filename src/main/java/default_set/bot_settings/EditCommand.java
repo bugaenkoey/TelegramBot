@@ -4,6 +4,8 @@ import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageTe
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import support_classes.Support;
 
+import java.nio.charset.StandardCharsets;
+
 import static default_set.bot_settings.TelegramBot.getSendCommands;
 
 public abstract class EditCommand extends  Command {
@@ -16,7 +18,8 @@ public abstract class EditCommand extends  Command {
     public EditMessageText execute (ChatSetting chatSetting, int messageID, Support support) {
         setSetting(chatSetting, support);
         return EditMessageText.builder()
-                .text(commandResultText)
+//                .text(commandResultText)
+                .text(new String(commandResultText.getBytes(), StandardCharsets.UTF_8))
                 .replyMarkup(InlineKeyboardMarkup.builder()
                         .keyboard(getParentCommandObj(parentCommand).getKeyboard(chatSetting))
                         .build())

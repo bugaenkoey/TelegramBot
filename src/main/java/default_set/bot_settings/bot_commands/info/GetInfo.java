@@ -12,6 +12,7 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKe
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -66,7 +67,8 @@ public class GetInfo extends SendCommand {
                         .append(System.lineSeparator()));
             }
 
-            sendMessage.setText(result.toString());
+//            sendMessage.setText(result.toString());
+            sendMessage.setText(new String(result.toString().getBytes(), StandardCharsets.UTF_8));
         }
 
         return sendMessage;
